@@ -19,6 +19,52 @@
     <script src="assets/js/route.js" type="module"></script>
 </head>
 <body>
+  <!--HEADER -->
+  <header class="header">
+      <div class="container">
 
+          <a href="#" class="logo">
+              <img src="./assets/images/logo1.png" width="50" height="58" alt="logo">
+          </a>
+
+          <div class="search-view" data-search-view>
+              <div class="search-wrapper">
+                  <input type="search" name="search" placeholder="Cauta oras" autocomplete="off" class="search-field" data-search-field>
+
+                  <span class="m-icon">Cauta</span>
+                  <button class="icon-btn leading-icon has-state" aria-label="close search" data-search-toggler>
+                      <span class="m-icon">arrow_back</span>
+                  </button>
+              </div>
+              <div class="search-result" data-search-result></div>
+                <ul class="view-list" data-search-list>
+                    <li class="view-item">
+                        <span class="m-icon">location_on</span>
+                        <div>
+                            <p class="item-title">Cluj</p>
+                            <p class="label-2 item-subtitle">Romania</p>
+                        </div>
+                        <a href="#" class="item-link has-state" data-search-toggler=""></a>
+                    </li>
+                </ul>
+          </div>
+
+          <div class="header-actions">
+              <button class="icon-btn has-state" aria-label="open search" data-search-toggler>
+                  <span class="m-icon icon">Cauta</span>
+              </button>
+
+              <a href="#/current-location" class="btn-primary has state" data-current-location-btn>
+                  <span class="m-icon icon">Locatia mea</span>
+                  <span class="span">Locatia curenta</span>
+              </a>
+          </div>
+
+      </div>
+  </header>
+
+    <main>
+
+    </main>
 </body>
 </html>
