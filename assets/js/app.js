@@ -6,8 +6,8 @@
 
 'use strict';
 
-import {fetchData, url} from "./api";
-import * as module from "./module";
+import {fetchData, url} from "./api.js";
+import * as module from "./module.js";
 
 /**
  * Add event listener on multiple elements
@@ -58,9 +58,9 @@ searchField.addEventListener("input", function () {
                 searchResult.innerHTML = `
                <ul class="view-list" data-search-list></ul>
                `;
-                const items = [];
+                const /** {NodeList} | [] */ items = [];
 
-                for (const {name, lat, lon, country} of locations) {
+                for (const {name, lat, lon, country, state} of locations) {
                     const searchItem = document.createElement("li");
                     searchItem.classList.add("view-item");
                     searchItem.innerHTML = `
