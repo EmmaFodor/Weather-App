@@ -8,6 +8,7 @@
 
 import {fetchData, url} from "./api.js";
 import * as module from "./module.js";
+import {getTime} from "./module.js";
 
 /**
  * Add event listener on multiple elements
@@ -122,7 +123,7 @@ export const updateWeather = function (lat, lon) {
      */
     fetchData(url.currentWeather(lat, lon), function (currentWeather) {
 
-        const {
+       const {
             weather,
             dt: dateUnix,
             sys: {sunrise: sunriseUnixUTC, sunset: sunsetUnixUTC},
@@ -131,6 +132,65 @@ export const updateWeather = function (lat, lon) {
             timezone
         } = currentWeather
         const [{description, icon}] = weather;
+
+
+        let now = new Date().getHours();
+        // Get the #greeting element
+        var greeting = document.querySelector('#greeting');
+
+        /**
+         * Get the greeting based on time
+         * @return {String} The greeting
+         */
+        var getGreeting = function () {
+            if (now >= 20) return 'Good night!';     // If it's after 8pm
+            if (now >= 17) return 'Good evening!';   // If it's after 5pm
+            if (now >= 11) return 'Good afternoon!'; // If it's after noon
+            return 'Good morning!';                 // Default message
+        };
+
+        /**
+         * Adjust the color theme based on time
+         */
+        var adjustColorMode = function () {
+
+            // Remove any existing classes
+            document.documentElement.classList.remove('transitional');
+            document.documentElement.classList.remove('night');
+
+            if (now > 20) {
+                document.documentElement.classList.add('night');
+                return;
+            }
+
+            if (now >= 17 || now <= 11) {
+                document.documentElement.classList.add('transitional');
+            }
+
+        };
+
+        /**
+         * Add a greeting and adjust the color palette
+         */
+        var updateUI = function () {
+
+            // Set the greeting
+            greeting.textContent = getGreeting();
+
+            // Update color palette
+            adjustColorMode();
+
+        };
+
+
+        // Update the UI on page load
+        updateUI();
+
+        // Check again every 15 minutes
+        setInterval(function () {
+            now = new Date().getHours();
+            updateUI();
+        }, 1000 * 60 * 15);
 
         const card = document.createElement("div");
         card.classList.add("card", "card-lg", "current-weather-card");
@@ -160,7 +220,6 @@ export const updateWeather = function (lat, lon) {
 
           <p class="title-3 meta-text" data-location></p>
         </li>
-
       </ul>
     `;
 
