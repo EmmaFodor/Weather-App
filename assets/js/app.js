@@ -76,8 +76,8 @@ searchField.addEventListener("input", function () {
                     items.push(searchItem.querySelector("[data-search-toggler]"));
                 }
                 addEventOnElements(items, "click", function (){
-                  toggleSearch();
-                  searchResult.classList.remove("active");
+                    toggleSearch();
+                    searchResult.classList.remove("active");
                 })
             });
         }, searchTimeoutDuration);
@@ -123,7 +123,7 @@ export const updateWeather = function (lat, lon) {
      */
     fetchData(url.currentWeather(lat, lon), function (currentWeather) {
 
-       const {
+        const {
             weather,
             dt: dateUnix,
             sys: {sunrise: sunriseUnixUTC, sunset: sunsetUnixUTC},
@@ -135,6 +135,7 @@ export const updateWeather = function (lat, lon) {
 
 
         let now = new Date().getHours();
+        console.log(now);
         // Get the #greeting element
         var greeting = document.querySelector('#greeting');
 
@@ -158,12 +159,12 @@ export const updateWeather = function (lat, lon) {
             document.documentElement.classList.remove('transitional');
             document.documentElement.classList.remove('night');
 
-            if (now > 20) {
+            if (now >= 20 || now <=5) {
                 document.documentElement.classList.add('night');
                 return;
             }
 
-            if (now >= 17 || now <= 11) {
+            if (now <= 17 || now >= 5) {
                 document.documentElement.classList.add('transitional');
             }
 
@@ -496,7 +497,6 @@ export const updateWeather = function (lat, lon) {
 }
 
 export const error404 = () => errorContent.style.display = "flex";
-
 
 
 

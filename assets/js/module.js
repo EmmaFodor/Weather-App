@@ -48,7 +48,6 @@ export const getDate = function (dateUnix, timezone) {
 };
 
 /**
- *
  * @param {number} timeUnix Unix time in seconds
  * @param {number} timezone Timezone shift from UTC in seconds
  * @returns {string} Time String. format: "HH:MM AM/PM"
@@ -103,11 +102,3 @@ export const aqiText = {
         message: "Health warnings of emergency conditions."
     }
 }
-
-
-
-
-
-
-
-
